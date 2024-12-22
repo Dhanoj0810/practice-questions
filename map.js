@@ -1,46 +1,137 @@
 // squares of [1, 2, 3] => [1, 4, 9]
-const squaresOf = function (numbers) { };
+const squareOf = function (number) {
+  return number * number;
+};
+
+const squaresOf = function (numbers) {
+  return numbers.map(squareOf);
+};
 
 // lengths of ["apple", "banana", "kiwi"] => [5, 6, 4]
-const lengthsOf = function (strings) { };
+const lengthOf = function (string) {
+  return string.length;
+};
+
+const lengthsOf = function (strings) {
+  return strings.map(lengthOf);
+};
 
 // uppercase of ["hello", "world"] => ["HELLO", "WORLD"]
-const uppercaseOf = function (strings) { };
+const toUppercase = function (string) {
+  return string.toUpperCase();
+}
+const uppercaseOf = function (strings) {
+  return strings.map(toUppercase);
+};
 
 // first characters of ["apple", "banana", "kiwi"] => ["a", "b", "k"]
-const firstCharactersOf = function (strings) { };
+const firstChar = function (string) {
+  return string.at(0);
+};
+
+const firstCharactersOf = function (strings) {
+  return strings.map(firstChar);
+};
 
 // truth values of [0, 1, 2, 3] => [false, true, true, true]
 // Assume non-zero numbers are true, and zero is false
-const truthValuesOf = function (numbers) { };
+const isTruthy = function (number) {
+  return number !== 0;
+};
+
+const truthValuesOf = function (numbers) {
+  return numbers.map(isTruthy);
+};
 
 // reverse strings of ["hello", "world"] => ["olleh", "dlrow"]
-const reversedStringsOf = function (strings) { };
+const reverse = function (string) {
+  return Array.from(string).reverse().join('');
+};
+
+const reversedStringsOf = function (strings) {
+  return strings.map(reverse);
+};
 
 // double letters of ["cat", "dog", "bat"] => ["ccaat", "ddoog", "bbaatt"]
-const doubleLettersOf = function (strings) { };
+const doubleString = function (string) {
+  return string.repeat(2);
+};
+
+const doubleCharInWord = function (string) {
+  return Array.from(string).map(doubleString).join('');
+};
+
+const doubleLettersOf = function (strings) {
+  return strings.map(doubleCharInWord);
+};
 
 // boolean negation of [true, false, true] => [false, true, false]
-const negatedBooleansOf = function (booleans) { };
+const not = function (boolean) {
+  return !boolean;
+};
+
+const negatedBooleansOf = function (booleans) {
+  return booleans.map(not);
+};
 
 // character codes of ["a", "b", "c"] => [97, 98, 99]
 // Use the `charCodeAt` method on each string
-const charCodesOf = function (strings) { };
+const charCodeOf = function (char) {
+  return char.charCodeAt();
+};
+
+const charCodesOf = function (strings) {
+  return strings.map(charCodeOf);
+};
 
 // extract domain names from ["user1@gmail.com", "admin@yahoo.com"] => ["gmail.com", "yahoo.com"]
-const domainNamesOf = function (emails) { };
+const domainName = function (email) {
+  const positionOfAt = email.indexOf('@');
+
+  return email.slice(positionOfAt + 1);
+};
+
+const domainNamesOf = function (emails) {
+  return emails.map(domainName);
+};
 
 // split words in ["hello world", "goodbye moon"] => [["hello", "world"], ["goodbye", "moon"]]
-const splitWordsOf = function (strings) { };
+const splitToWords = function (string) {
+  return string.split(' ');
+};
+
+const splitWordsOf = function (strings) {
+  return strings.map(splitToWords);
+};
 
 // join arrays of [["a", "b"], ["c", "d"]] => ["ab", "cd"]
-const joinedArraysOf = function (arrayOfArrays) { };
+const joinWords = function (arrayOfWords) {
+  return arrayOfWords.join('');
+};
+
+const joinedArraysOf = function (arrayOfArrays) {
+  return arrayOfArrays.map(joinWords);
+};
 
 // repeat strings in ["hi", "bye"] => ["hihi", "byebye"]
-const repeatedStringsOf = function (strings) { };
+const repeatedStringsOf = function (strings) {
+  return strings.map(doubleString);
+};
 
 // count vowels in ["apple", "banana", "grape"] => [2, 3, 2]
-const countVowelsOf = function (strings) { };
+const isVowel = function (char) {
+  const vowels = 'aeiou';
+
+  return vowels.includes(char);
+};
+
+const countVowels = function (string) {
+  return Array.from(string).filter(isVowel).length;
+};
+
+const countVowelsOf = function (strings) {
+  return strings.map(countVowels);
+};
 
 // reverse arrays of [[1, 2, 3], [4, 5, 6]] => [[3, 2, 1], [6, 5, 4]]
 const reversedArraysOf = function (arrays) { };

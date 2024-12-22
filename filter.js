@@ -1,32 +1,90 @@
 // even numbers [1, 2, 3, 4, 5] => [2, 4]
-const filterEvenNumbers = function (numbers) { };
+
+const isEven = function (number) {
+  return number % 2 === 0;
+};
+
+const filterEvenNumbers = function (numbers) {
+  return numbers.filter(isEven);
+};
 
 // words with more than 5 letters ["apple", "banana", "kiwi", "grape"] => ["banana"]
-const filterLongWords = function (words) { };
+const isLongerthan = function (threshold) {
+  return function (string) {
+    return string.length > threshold;}
+};
+
+const filterLongWords = function (words) {
+  const isLongerthan5 = isLongerthan(5);
+
+  return words.filter(isLongerthan5);
+};
 
 // people older than 30 [{name: "Alice", age: 25}, {name: "Bob", age: 35}] => [{name: "Bob", age: 35}]
-const filterAdults = function (people) { };
+const isGreaterThan = function (threshold) {
+  return function (number) {
+    return number > threshold;
+  }
+}
+
+const filterAdults = function (people) {
+  return people.filter(function (person) {
+    const olderThan30 = isGreaterThan(30);
+
+    return olderThan30(person[age]);
+  });
+};
 
 // active users [{username: "alice", active: true}, {username: "bob", active: false}] => [{username: "alice", active: true}]
-const filterActiveUsers = function (users) { };
+const filterActiveUsers = function (users) {
+  return users.filter(function (user) {
+    return user[active];
+  });
+};
 
 // numbers greater than 10 [5, 12, 7, 18, 3] => [12, 18]
-const filterNumbersGreaterThanTen = function (numbers) { };
+const filterNumbersGreaterThanTen = function (numbers) {
+  const isGreaterThan10 = isGreaterThan(10);
+  
+  return numbers.filter(isGreaterThan10);
+};
 
 // books with more than 200 pages [{title: "Book 1", pages: 150}, {title: "Book 2", pages: 250}] => [{title: "Book 2", pages: 250}]
-const filterLongBooks = function (books) { };
+const filterLongBooks = function (books) {
+  return books.filter(function (book) {
+    const isGreaterThan200 = isGreaterThan(200);
+
+    return isGreaterThan200(book[pages]);
+  });
+};
 
 // users with incomplete profiles [{username: "alice", profileComplete: true}, {username: "bob", profileComplete: false}] => [{username: "bob", profileComplete: false}]
-const filterIncompleteProfiles = function (users) { };
+const filterIncompleteProfiles = function (users) {
+  return users.filter(function (user) {
+    return user[prfileComplete];
+  });
+};
 
 // students with grades above 80 [{name: "John", grade: 75}, {name: "Jane", grade: 85}] => [{name: "Jane", grade: 85}]
-const filterHighGrades = function (students) { };
+const filterHighGrades = function (students) {
+  return students.filter(function (student) {
+    const gradeAbove80 = isGreaterThan(80);
+
+    return gradeAbove80(student[grade]);
+  });
+};
 
 // products that are in stock [{product: "apple", inStock: true}, {product: "banana", inStock: false}] => [{product: "apple", inStock: true}]
-const filterInStockProducts = function (products) { };
+const filterInStockProducts = function (products) {
+  return products.filter(function (product) {
+    return product[inStock];
+  });
+};
 
 // orders placed in the last 30 days [{orderDate: "2024-11-01"}, {orderDate: "2024-12-01"}] => [{orderDate: "2024-12-01"}]
-const filterRecentOrders = function (orders) { };
+const filterRecentOrders = function (orders) {
+
+};
 
 // products with a price lower than the average [{name: "item1", price: 10}, {name: "item2", price: 20}, {name: "item3", price: 5}] => [{name: "item1", price: 10}, {name: "item3", price: 5}]
 const filterBelowAveragePrice = function (products) { };

@@ -1,35 +1,105 @@
 // sumOf([1, 2, 3, 4]) => 10
-const sumOf = function (numbers) { }
+const add = function (number1, number2) {
+  return number1 + number2;
+}
+
+const sumOf = function (numbers) {
+  return numbers.reduce(add, 0);
+}
 
 // productOf([1, 2, 3, 4]) => 24
-const productOf = function (numbers) { }
+const multiply = function (number1, number2) {
+  return number1 * number2;
+}
+
+const productOf = function (numbers) {
+  return numbers.reduce(multiply);
+}
 
 // averageOf([1, 2, 3, 4, 5]) => 3
-const averageOf = function (numbers) { }
+const averageOf = function (numbers) {
+  return sumOf(numbers) / numbers.length;
+}
 
 // minOf([3, 1, 4, 1, 5, 9, 2]) => 1
-const minOf = function (numbers) { }
+const minOfTwoNumbers = function (number1, number2) {
+  return Math.min(number1, number2);
+}
+
+const minOf = function (numbers) {
+  return numbers.reduce(minOfTwoNumbers);
+}
 
 // maxOf([3, 1, 4, 1, 5, 9, 2]) => 9
-const maxOf = function (numbers) { }
+const maxOfTwoNumbers = function (number1, number2) {
+  return Math.max(number1, number2);
+}
+
+const maxOf = function (numbers) {
+  return numbers.reduce(maxOfTwoNumbers);
+}
 
 // sumPositiveNumbers([1, -2, 3, -4]) => 4
-const sumPositiveNumbers = function (numbers) { }
+const isPositive = function (number) {
+  return number > 0;
+}
+
+const sumPositiveNumbers = function (numbers) {
+  return numbers.filter(isPositive).reduce(add, 0);
+}
 
 // sumOfSquares([1, 2, 3, 4]) => 30
-const sumOfSquares = function (numbers) { }
+const squareOf = function (number) {
+  return number * number;
+}
+
+const sumOfSquares = function (numbers) {
+  return numbers.map(squareOf).reduce(add, 0);
+}
 
 // sumOfOddNumbers([1, 2, 3, 4, 5]) => 9
-const sumOfOddNumbers = function (numbers) { }
+const isOdd = function (number) {
+  return (number & 1) === 1;
+}
+
+const sumOfOddNumbers = function (numbers) {
+  return numbers.filter(isOdd).reduce(add, 0);
+}
 
 // countNegativeNumbers([1, -2, 3, -4]) => 2
-const countNegativeNumbers = function (numbers) { }
+const complement = function (fn) {
+  return function (...args) {
+    return !fn(...args);
+  }
+}
+
+const isNegative = complement(isPositive);
+
+const count = function (predicate) {
+  return function (count, element) {
+    return predicate(element) ? count + 1 : count;
+  }
+}
+
+const countNegativeNumbers = function (numbers) {
+  return numbers.reduce(count(isNegative), 0)
+}
 
 // findSumOfEvenSquares([1, 2, 3, 4]) => 20
-const findSumOfEvenSquares = function (numbers) { }
+const isEven = complement(isOdd);
+
+const findSumOfEvenSquares = function (numbers) {
+  return numbers.filter(isEven).map(squareOf).reduce(add, 0);
+}
 
 // concatenateWords(["hello", "world"]) => "helloworld"
-const concatenateWords = function (words) { }
+const concat = function (string1, string2) {
+  return string1 + string2;
+}
+
+const concatenateWords = function (words) {
+  return words.reduce(concat, '');
+}
 
 // longestWord(["apple", "banana", "cherry", "kiwi"]) => "banana"
 const longestWord = function (words) { }

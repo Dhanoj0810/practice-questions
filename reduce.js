@@ -75,14 +75,12 @@ const complement = function (fn) {
 
 const isNegative = complement(isPositive);
 
-const count = function (predicate) {
-  return function (count, element) {
-    return predicate(element) ? count + 1 : count;
-  }
+const increment = function (number) {
+  return number + 1;
 }
 
 const countNegativeNumbers = function (numbers) {
-  return numbers.reduce(count(isNegative), 0)
+  return numbers.filter(x => x < 0).reduce(increment, 0);
 }
 
 // findSumOfEvenSquares([1, 2, 3, 4]) => 20
@@ -102,16 +100,28 @@ const concatenateWords = function (words) {
 }
 
 // longestWord(["apple", "banana", "cherry", "kiwi"]) => "banana"
-const longestWord = function (words) { }
+const longString = (string1, string2) => string1.length > string2.length ? string1 : string2;
+
+const longestWord = function (words) {
+  return words.reduce(longString);
+}
 
 // shortestWord(["apple", "banana", "cherry", "kiwi"]) => "kiwi"
-const shortestWord = function (words) { }
+const smallString = (string1, string2) => string1.length < string2.length ? string1 : string2;
+
+const shortestWord = function (words) {
+  return words.reduce(smallString);
+}
 
 // joinWithComma(["apple", "banana", "cherry"]) => "apple,banana,cherry"
-const joinWithComma = function (words) { }
+const joinWithComma = function (words) {
+  return words.reduce((string1, string2) => string1 + ',' + string2, '');
+}
 
 // reverseWords(["hello", "world"]) => "world hello"
-const reverseWords = function (words) { }
+const reverseWords = function (words) {
+  return words.reduce(reverse).reduce(concat, '');
+}
 
 // joinWordsWithSpace(["apple", "banana", "cherry"]) => "apple banana cherry"
 const joinWordsWithSpace = function (words) { }
